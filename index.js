@@ -46,6 +46,10 @@ app.get('/', (req, res) => {
 	res.render('home', { user: req.user });
 });
 
+app.post('/', (req, res) => {
+	res.send('posted');
+});
+
 /*app.get('/login', (req, res) => {
 	res.render('login');
 });*/

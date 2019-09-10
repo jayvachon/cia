@@ -5,7 +5,7 @@ const extract = (html) => {
 	const $ = cheerio.load(html);
 	const tables = $('.mcnTextContentContainer > tbody > tr > td').children('table');
 	let form = {};
-	_.forEach(tables, table => _.assignWith(form, readTable(table)));
+	_.forEach(tables, table => _.assign(form, readTable(table)));
 	return form;
 };
 
