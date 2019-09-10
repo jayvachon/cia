@@ -3,6 +3,7 @@ const sampleClient = require('./sampleClient');
 const _ = require('lodash');
 const parser = require('./parser');
 const templates = require('./templates');
+const config = require('./config');
 
 const gmail = google.gmail({
 	version: 'v1',
@@ -30,38 +31,57 @@ const list = () => {
 		.then(bodies => {
 
 			// Find new entries and pull out the important data
-			let entries = _.map(bodies, body => parser.extract(body.content[0]));
-			return _.filter(entries, entry => entry.Name !== undefined);
+			let entries = _.map(bodies, body => {
+				return {
+					id: body.id,
+					content: parser.extract(body.content[0]),
+				};
+			});
+			return _.filter(entries, entry => entry.content.Name !== undefined);
+		})
+		.then(entries => {
+
+			// Do not proceed for emails that have already been processed (this is tracked by the 'id' field)
+			return sheets.spreadsheets.values.get({
+				spreadsheetId: config.SPREADSHEET_ID,
+				range: 'GIT!K:K',
+			})
+			.then(ids => {
+				let allIds = _.flatten(ids.data.values);
+				return _.filter(entries, entry => !_.includes(allIds, entry.id));
+			});
 		})
 		.then(entries => {
 			console.log(entries);
 
-			return sheets.spreadsheets.values.append({
-				 spreadsheetId: "15HPGz57OYdRLj-1WGSsHOUXzfCim4ORreS2ziKmrb-M",
-				 range: "Sheet1!A1:J41",
-				 insertDataOption: "INSERT_ROWS",
-				 valueInputOption: "RAW",
-				 resource: {
-				 	majorDimension: "ROWS",
-				 	values: [
-				 		[
-							"email",
-							"phone",
-							"first name",
-							"last name",
-							"student type",
-							"term",
-							"program",
-							"last correspondance",
-							"date corresponded",
-							"notes",
-						]
-				 	]
-			 	}
-			});
+			return Promise.all(_.map(entries, entry => {
+				return sheets.spreadsheets.values.append({
+					 spreadsheetId: config.SPREADSHEET_ID,
+					 range: "GIT!A1:I1",
+					 insertDataOption: "INSERT_ROWS",
+					 valueInputOption: "RAW",
+					 resource: {
+					 	majorDimension: "ROWS",
+					 	values: [
+					 		[
+					 			entry.id,
+					 			entry.content['Email'],
+					 			entry.content['Cell Phone'],
+					 			entry.content['Name'],
+					 			entry.content['Name'],
+					 			'student type',
+					 			'winter 2020',
+					 			entry.content['Choose a program'],
+					 			'today',
+							]
+					 	]
+				 	}
+				});
+			}));
+			
 		})
 		.then(appended => {
-			console.log(appended);
+			// console.log(appended);
 		});
 };
 
