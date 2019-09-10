@@ -50,17 +50,11 @@ app.post('/', (req, res) => {
 	res.send('posted');
 });
 
-/*app.get('/login', (req, res) => {
-	res.render('login');
-});*/
-
 app.get('/failed', (req, res) => res.send('Login failed'));
 
-// app.get('/login/google', passport.authenticate('google', { scope: ['profile', 'https://www.googleapis.com/auth/spreadsheets'] }));
 app.get('/login', passport.authenticate('google', { scope: scopes }));
 
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-    // Successful authentication, redirect home.
     res.redirect('/');
 });
 

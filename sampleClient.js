@@ -29,8 +29,7 @@ const keyPath = path.join(__dirname, 'config.json');
 let keys = [];
 
 if (fs.existsSync(keyPath)) {
-	const keyFile = require(keyPath);
-	keys = keyFile.installed || keyFile.web;
+	keys = require(keyPath);
 }
 
 const invalidRedirectUri = `The provided keyfile does not define a valid
@@ -65,8 +64,8 @@ class SampleClient {
 
 	    // create an oAuth client to authorize the API call
 	    this.oAuth2Client = new google.auth.OAuth2(
-	    	keys.client_id,
-	    	keys.client_secret,
+	    	keys.GOOGLE_CLIENT_ID,
+	    	keys.GOOGLE_CLIENT_SECRET,
 	    	redirectUri
 		);
 	}

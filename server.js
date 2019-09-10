@@ -1,9 +1,16 @@
 const {google} = require('googleapis');
 const sampleClient = require('./sampleClient');
 const _ = require('lodash');
+const parser = require('./parser');
+const templates = require('./templates');
 
 const gmail = google.gmail({
 	version: 'v1',
+	auth: sampleClient.oAuth2Client,
+});
+
+const sheets = google.sheets({
+	version: 'v4',
 	auth: sampleClient.oAuth2Client,
 });
 
@@ -13,25 +20,6 @@ const base64ToString = (base64str) => {
 	return buff.toString('utf8');
 };
 
-/*async function list() {
-	const res = await gmail.users.messages.list({userId: 'me'});
-	console.log(res.data);
-	// gmail.message.
-	gmail.users.messages.get({
-		'userId': 'me',
-		'id': '16cfd13842472c2c'
-	})
-	.then(msg => {
-		console.log(JSON.stringify(msg.data.payload.parts, null, 4));
-
-		let parts = msg.data.payload.parts;
-		console.log(_.map(parts, p => {
-			return base64ToString(p.body.data);
-		}));
-	});
-	return res.data;
-}*/
-
 const list = () => {
 	return gmail.users.messages.list({userId: 'me', q: 'from:admissions@codeimmersives.com is:unread'})
 		.then(list => {
@@ -40,7 +28,40 @@ const list = () => {
 		.then(ids => getMessages(ids))
 		.then(messages => extractBody(messages))
 		.then(bodies => {
-			console.log(bodies);
+
+			// Find new entries and pull out the important data
+			let entries = _.map(bodies, body => parser.extract(body.content[0]));
+			return _.filter(entries, entry => entry.Name !== undefined);
+		})
+		.then(entries => {
+			console.log(entries);
+
+			return sheets.spreadsheets.values.append({
+				 spreadsheetId: "15HPGz57OYdRLj-1WGSsHOUXzfCim4ORreS2ziKmrb-M",
+				 range: "Sheet1!A1:J41",
+				 insertDataOption: "INSERT_ROWS",
+				 valueInputOption: "RAW",
+				 resource: {
+				 	majorDimension: "ROWS",
+				 	values: [
+				 		[
+							"email",
+							"phone",
+							"first name",
+							"last name",
+							"student type",
+							"term",
+							"program",
+							"last correspondance",
+							"date corresponded",
+							"notes",
+						]
+				 	]
+			 	}
+			});
+		})
+		.then(appended => {
+			console.log(appended);
 		});
 };
 
@@ -59,7 +80,6 @@ const extractBody = (messages) => {
 		return resolve(
 			_.map(messages, message => {
 
-				console.log(message);
 				if (message.data.payload.parts) {
 					let parts = message.data.payload.parts;
 					return {
@@ -81,6 +101,7 @@ const extractBody = (messages) => {
 
 if (module === require.main) {
 	const scopes = [
+		'https://www.googleapis.com/auth/spreadsheets',
 		'https://www.googleapis.com/auth/gmail.readonly',
 		'https://www.googleapis.com/auth/gmail.send',
 	];
