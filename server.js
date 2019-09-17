@@ -26,6 +26,40 @@ const stringToBase64 = (str) => {
 	return buff.toString('base64');
 };
 
+const getMessages = (ids) => {
+	return Promise.all(_.map(ids, id => {
+		return gmail.users.messages.get({
+			id: id,
+			userId: 'me',
+			format: 'full',
+		});
+	}))
+};
+
+const extractBody = (messages) => {
+	return new Promise((resolve, reject) => {
+		return resolve(
+			_.map(messages, message => {
+
+				if (message.data.payload.parts) {
+					let parts = message.data.payload.parts;
+					return {
+						id: message.data.id,
+						content: _.map(parts, part => {
+							return base64ToString(part.body.data);
+						}),
+					}
+				} else {
+					return { 
+						id: message.data.id,
+						content: [base64ToString(message.data.payload.body.data)],
+					};
+				}
+			})
+		)
+	});
+};
+
 const makeBody = (to, from, subject, message) => {
     let str = ["Content-Type: text/html; charset=\"UTF-8\"\n",
         "MIME-Version: 1.0\n",
@@ -46,10 +80,10 @@ const sendMessage = (raw) => {
             raw: raw
         }
     });
-}
+};
 
 const list = () => {
-	return gmail.users.messages.list({userId: 'me', q: 'subject:New Entry: New Candidate'})
+	return gmail.users.messages.list({userId: 'me', q: 'in:all subject:"Get in touch" OR subject:"New Entry: New Candidate"'})
 		.then(list => {
 			return _.map(list.data.messages, m => m.id);
 		})
@@ -87,7 +121,7 @@ const list = () => {
 			return Promise.all(_.map(entries, entry => {
 				return sheets.spreadsheets.values.append({
 					 spreadsheetId: config.SPREADSHEET_ID,
-					 range: "GIT!A1:I1",
+					 range: "GIT!A1:J1",
 					 insertDataOption: "INSERT_ROWS",
 					 valueInputOption: "RAW",
 					 resource: {
@@ -103,6 +137,7 @@ const list = () => {
 					 			entry.content.aid,
 					 			'Winter 2020',
 					 			entry.content.program,
+					 			entry.content.message,
 					 			new Date(),
 							]
 					 	]
@@ -114,8 +149,6 @@ const list = () => {
 		.then(appended => {
 			return Promise.all(_.each(appended, contact => {
 					let values = JSON.parse(contact.config.body).values[0];
-					// console.log(updates);
-					console.log(values);
 					let email = values[1];
 					let firstName = values[3];
 					let program = values[8];
@@ -129,40 +162,6 @@ const list = () => {
 			console.log(sent);
 		})
 		.catch(err => console.error(err));
-};
-
-const getMessages = (ids) => {
-	return Promise.all(_.map(ids, id => {
-		return gmail.users.messages.get({
-			id: id,
-			userId: 'me',
-			format: 'full',
-		});
-	}))
-};
-
-const extractBody = (messages) => {
-	return new Promise((resolve, reject) => {
-		return resolve(
-			_.map(messages, message => {
-
-				if (message.data.payload.parts) {
-					let parts = message.data.payload.parts;
-					return {
-						id: message.data.id,
-						content: _.map(parts, part => {
-							return base64ToString(part.body.data);
-						}),
-					}
-				} else {
-					return { 
-						id: message.data.id,
-						content: [base64ToString(message.data.payload.body.data)],
-					};
-				}
-			})
-		)
-	});
 };
 
 if (module === require.main) {

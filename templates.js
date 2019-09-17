@@ -8,11 +8,13 @@ const initial = (firstName, program, upcomingTerm) => {
 	if (_.includes(_.toLower(program), 'javascript')) {
 		career = 'junior web developer';
 		skill = 'websites';
-	}
-	
-	if (_.includes(_.toLower(program), 'python')) {
+	} else if (_.includes(_.toLower(program), 'python')) {
 		career = 'Python developer';
 		skill = 'programs';
+	}
+	else {
+		career = 'junior web or Python developer';
+		skill = 'websites and programs';
 	}
 	
 	let str = `<div dir="ltr"><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Hello ${firstName},</p>
