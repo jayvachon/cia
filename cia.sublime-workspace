@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"spread",
+				"spreadsheetId\twarning"
+			],
+			[
 				"purchase",
 				"purchaseButton\tconst"
 			]
@@ -11,6 +15,96 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "parser.js",
+			"settings":
+			{
+				"buffer_size": 2313,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/gmail.js",
+			"settings":
+			{
+				"buffer_size": 1154,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "server.js",
+			"settings":
+			{
+				"buffer_size": 4587,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "config.json",
+			"settings":
+			{
+				"buffer_size": 290,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 21 files for \"approot\"\n\n/Users/adminmac1/node/cia/test/parser.js:\n    1  require('should');\n    2  const parser = require('../parser');\n    3: const appRoot = require('app-root-path');\n    4  const fs = require('mz/fs');\n    5  \n    .\n    7  \n    8  \tit('should extract \"get in touch\" email information', done => {\n    9: \t\tconst sample = fs.readFile(`${appRoot}/samples/get_in_touch.html`, 'utf8')\n   10  \t\t\t.then(html => {\n   11  \t\t\t\tlet extraction = parser.extract(html);\n   ..\n   17  \n   18  \tit('should extract new entry: new candidate email information', done => {\n   19: \t\tconst sample = fs.readFile(`${appRoot}/samples/new_entry_new_candidate.html`, 'utf8')\n   20  \t\t\t.then(html => {\n   21  \t\t\t\tlet extraction = parser.extract(html);\n   ..\n   26  \n   27  \tit('should read table', done => {\n   28: \t\tconst sample = fs.readFile(`${appRoot}/samples/table.html`, 'utf8')\n   29  \t\t\t.then(html => {\n   30  \t\t\t\tlet data = parser.readTable(html);\n\n4 matches in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 978,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "templates.js",
+			"settings":
+			{
+				"buffer_size": 2589,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/templates.js",
+			"settings":
+			{
+				"buffer_size": 284,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "test/parser.js",
+			"settings":
+			{
+				"buffer_size": 971,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sampleClient.js",
+			"settings":
+			{
+				"buffer_size": 3240,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/home.ejs",
+			"settings":
+			{
+				"buffer_size": 316,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -24,16 +118,32 @@
 		"selected_items":
 		[
 			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Disable Package"
+			],
+			[
+				"html ",
+				"HTMLBeautify"
+			],
+			[
+				"rei",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"editp",
+				"Project: Edit Project"
+			],
+			[
 				"edit",
 				"Project: Edit Project"
 			],
 			[
 				"mater",
 				"Material Theme: Configuration"
-			],
-			[
-				"install",
-				"Package Control: Advanced Install Package"
 			],
 			[
 				"packa",
@@ -60,10 +170,24 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/rs/node/cia"
+		"/Users/adminmac1/node/cia",
+		"/Users/adminmac1/node/cia/samples",
+		"/Users/adminmac1/node/cia/test",
+		"/Users/adminmac1/node/cia/views"
 	],
 	"file_history":
 	[
+		"/Users/adminmac1/node/cia/samples/get_in_touch.html",
+		"/Users/adminmac1/node/cia/index.js",
+		"/Users/adminmac1/node/cia/samples/new_entry_new_candidate.html",
+		"/Users/adminmac1/node/cia/config.json",
+		"/Users/adminmac1/node/cia/sampleClient.js",
+		"/Users/adminmac1/node/cia/test/parser.js",
+		"/Users/adminmac1/node/cia/test/templates.js",
+		"/Users/adminmac1/node/cia/test/template.js",
+		"/Users/adminmac1/node/cia/package.json",
+		"/Users/adminmac1/node/cia/samples/table.html",
+		"/Users/adminmac1/node/cia/cia.sublime-project",
 		"/Users/rs/node/ci-admissions/.gitignore",
 		"/Users/rs/node/ci-admissions/index.js",
 		"/Users/rs/node/ci-admissions/tests/authorization.js",
@@ -79,13 +203,14 @@
 	],
 	"find":
 	{
-		"height": 70.0
+		"height": 28.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 158.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -93,6 +218,44 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"approot",
+			"text",
+			"table",
+			"mcnTextContentContainer",
+			"<p dir=\"ltr\">",
+			"/",
+			"+",
+			"\\",
+			"<p",
+			"\\n",
+			"res",
+			"rows",
+			"buffer",
+			"gmail",
+			"myrealemail",
+			"function",
+			"var",
+			"data",
+			"d['",
+			"d.",
+			"allIds",
+			"ids",
+			"CONFIG",
+			"entry",
+			"Emai∂l",
+			"gmail",
+			"resolve",
+			"keyPath",
+			"client_secret",
+			"GOOGLE_CLIENT_SECRET",
+			"id",
+			"redirect_uris",
+			"config.",
+			"\\n\\n",
+			"parser",
+			"javascript",
+			"table",
+			"extract"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -110,8 +273,354 @@
 	"groups":
 	[
 		{
+			"selected": 8,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "parser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2313,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1112,
+								1112
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "test/gmail.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								891,
+								891
+							]
+						],
+						"settings":
+						{
+							"_anf_new": "",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 32.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "server.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4587,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4094,
+								3661
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "config.json",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 290,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								290,
+								290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 978,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										159,
+										166
+									],
+									[
+										364,
+										371
+									],
+									[
+										620,
+										627
+									],
+									[
+										847,
+										854
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								191,
+								191
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2000,
+								2000
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "test/templates.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 284,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								231,
+								231
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "test/parser.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 971,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								251,
+								261
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "sampleClient.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3240,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2924,
+								2931
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false,
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							},
+							"use_tab_stops": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "views/home.ejs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								298,
+								298
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/EJS 2/EJS.sublime-syntax",
+							"typescript_plugin_format_options":
+							{
+								"convertTabsToSpaces": false,
+								"indentSize": 4,
+								"tabSize": 4
+							}
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -168,6 +677,42 @@
 		"selected_items":
 		[
 			[
+				"tem",
+				"templates.js"
+			],
+			[
+				"c",
+				"config.json"
+			],
+			[
+				"sampl",
+				"sampleClient.js"
+			],
+			[
+				"sample",
+				"sampleClient.js"
+			],
+			[
+				"con",
+				"config.json"
+			],
+			[
+				"packa",
+				"package.json"
+			],
+			[
+				"pack",
+				"package.json"
+			],
+			[
+				"testp",
+				"test/parser.js"
+			],
+			[
+				"pars",
+				"parser.js"
+			],
+			[
 				"giti",
 				".gitignore"
 			],
@@ -182,10 +727,6 @@
 			[
 				"testu",
 				"test/test-utils.js"
-			],
-			[
-				"packa",
-				"package.json"
 			],
 			[
 				".en",
@@ -231,7 +772,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 241.0,
 	"status_bar_visible": true,
 	"template_settings":

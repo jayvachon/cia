@@ -83,7 +83,7 @@ const sendMessage = (raw) => {
 };
 
 const list = () => {
-	return gmail.users.messages.list({userId: 'me', q: 'in:all subject:"Get in touch" OR subject:"New Entry: New Candidate"'})
+	return gmail.users.messages.list({userId: 'me', q: 'in:all subject:"Get in touch" OR subject:"New Entry: New Candidate" OR subject:"Contact Us Form"'})
 		.then(list => {
 			return _.map(list.data.messages, m => m.id);
 		})

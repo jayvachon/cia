@@ -15,6 +15,16 @@ describe('Parser', () => {
 			});
 	});
 
+	it('should extract "Contact Us Form" email information', done => {
+		const sample = fs.readFile(`${appRoot}/samples/contact_us_form.html`, 'utf8')
+			.then(html => {
+				let extraction = parser.extract(html);
+				console.log(extraction);
+				extraction.should.be.type('object');
+				done();
+			});
+	});
+
 	it('should extract new entry: new candidate email information', done => {
 		const sample = fs.readFile(`${appRoot}/samples/new_entry_new_candidate.html`, 'utf8')
 			.then(html => {

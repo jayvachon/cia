@@ -59,7 +59,7 @@ const extract = (html) => {
 		return {
 			firstName: firstName,
 			lastName: lastName,
-			email: form['Email Address'],
+			email: form['Email Address'] || form['Email'],
 			phone: form['Phone Number'],
 			program: '',
 			status: status,
