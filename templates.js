@@ -19,15 +19,17 @@ const initial = (firstName, program, upcomingTerm) => {
 	
 	let str = `<div dir="ltr"><p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Hello ${firstName},</p>
 		<br>
-		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Thank you for your application to the Code Immersives program at the Digital Film Academy in New York City. Our accredited, eleven-month program prepares you for a career as a ${career}, starting from the very basics of programming. By the end of the program, you will be able to write ${skill} from scratch and deploy them on the cloud.</p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Thank you for your interest in Code Immersives NYC. Our accredited program covers everything from the fundamentals of programming to full stack development and cloud computing. Please read on for basic information about the program and how to enroll:</p>
 		<br>
-		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Unlike a coding “boot camp,” which typically runs for three to six months, our program takes a slower approach to make sure that everyone can follow along. We have an excellent group of fun and engaging instructors who are happy to meet after class for additional assistance.</p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><b>What's the cost?</b></p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Tuition for the program is $17,995, and we accept various forms of assistance to help cover this cost, including GI Bill benefits, Pell Grants, government student loans and private student loans through Climb.</p>
 		<br>
-		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Tuition for the three-term program is $17,995. We accept GI Bill benefits and financial aid, including Pell Grants, government student loans and private student loans through <a href="https://climbcredit.com/">Climb</a>. Whether you are a United States civilian, veteran, or international student, we will work with you to manage the cost of tuition.</p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><b>What's the schedule?</b></p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Classes run Monday-Thursday, from 10:30 AM to 4:00 PM, with an hour lunch break in the afternoon. Unlike a coding “boot camp,” we take a more measured pace so that everyone with a desire to learn has the opportunity to succeed. In less than a year, you will be prepared to enter the industry as a software developer.</p>
 		<br>
-		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Classes run Monday - Thursday, from 10:30 AM to 4:00 PM, with an hour lunch break in the afternoon.</p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt"><b>How do I enroll?</b></p>
+		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">We are currently enrolling students in our upcoming ${upcomingTerm} term. <b>If you are interested in attending, simply reply to this email with an indication that you’d like to proceed</p> and I will send you the relevant materials!</p>
 		<br>
-		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">We are currently enrolling students in our upcoming ${upcomingTerm} term. <b>If you are interested in attending, we encourage you to respond to this email to continue the application process.</b> Simply reply with an indication that you’d like to proceed and I will send you the relevant materials!</p>
 		<br>
 		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Warm regards,</p>
 		<p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt">Jay Vachon</p></div>`;
