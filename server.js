@@ -135,7 +135,7 @@ const list = () => {
 					 			entry.content.lastName,
 					 			entry.content.status,
 					 			entry.content.aid,
-					 			'Winter 2020',
+					 			'Spring 2020',
 					 			entry.content.program,
 					 			entry.content.message,
 					 			new Date(),
