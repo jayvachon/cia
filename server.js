@@ -153,7 +153,7 @@ const list = () => {
 					let firstName = values[3];
 					let program = values[8];
 					let body = templates.initial(firstName, program, 'May');
-					let raw = makeBody(email, 'admissions@codeimmersives.com', 'RE: Code Immersives NYC', body)
+					let raw = makeBody(email, 'admissions@codeimmersives.com', 'RE: Code Immersives', body)
 					return sendMessage(raw);
 				})
 			);
